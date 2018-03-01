@@ -33,9 +33,10 @@ export class HeroDetailsComponent implements OnInit {
     );
   }
 
-  save() {
+  async save() {
     const hero: Hero = this.form.getRawValue();
-    this.heroService.update(hero.id, hero).toPromise();
+    await this.heroService.update(hero.id, hero).toPromise();
+    this.router.navigate(['heroes']);
   }
 
   async delete() {
