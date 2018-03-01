@@ -31,4 +31,9 @@ export class HeroDetailsComponent implements OnInit {
       tap(hero => this.form.patchValue(hero)),
     );
   }
+
+  save() {
+    const hero: Hero = this.form.getRawValue();
+    this.heroService.update(hero.id, hero).toPromise();
+  }
 }
