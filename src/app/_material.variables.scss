@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+// Color schema of the application.
+// Primary and accent colors following the Material Design theme.
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-blue-grey);
+$warn: mat-palette($mat-red);
+
+// Map with the values of the application theme
+$theme: mat-light-theme($primary, $accent, $warn);
