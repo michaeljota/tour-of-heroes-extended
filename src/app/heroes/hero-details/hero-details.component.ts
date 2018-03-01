@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { pluck, mergeMap } from 'rxjs/operators';
+import { pluck, mergeMap, tap } from 'rxjs/operators';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -13,16 +14,21 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailsComponent implements OnInit {
   public hero: Observable<Hero>;
+  public form: FormGroup;
 
   constructor(
+    private readonly builder: FormBuilder,
     private readonly heroService: HeroService,
     private readonly route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
+    this.form = this.builder.group(new Hero());
+
     this.hero = this.route.params.pipe(
-      pluck('id'),
-      mergeMap((id: string) => this.heroService.get(id)),
+      pluck<{}, string>('id'),
+      mergeMap((id) => this.heroService.get(id)),
+      tap(hero => this.form.patchValue(hero)),
     );
   }
 }
