@@ -7,7 +7,25 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div>ID: {{ (hero | async)?.id }}</div>
-    <div>Name: {{ (hero | async)?.name }}</div>
+    <form action="submit"
+      [formGroup]="form"
+    >
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="id"
+          readonly
+          placeholder="ID"
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          required
+          formControlName="name"
+          placeholder="Name"
+        >
+      </mat-form-field>
+    </form>
   </mat-card-content>
 </mat-card>
