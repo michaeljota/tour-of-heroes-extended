@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { pluck, mergeMap, tap } from 'rxjs/operators';
 
@@ -20,6 +20,7 @@ export class HeroDetailsComponent implements OnInit {
     private readonly builder: FormBuilder,
     private readonly heroService: HeroService,
     private readonly route: ActivatedRoute,
+    private readonly router: Router,
   ) {}
 
   ngOnInit() {
@@ -35,5 +36,11 @@ export class HeroDetailsComponent implements OnInit {
   save() {
     const hero: Hero = this.form.getRawValue();
     this.heroService.update(hero.id, hero).toPromise();
+  }
+
+  async delete() {
+    const hero: Hero = this.form.getRawValue();
+    await this.heroService.delete(hero.id).toPromise();
+    this.router.navigate(['heroes']);
   }
 }
