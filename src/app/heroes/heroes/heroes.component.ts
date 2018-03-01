@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-heroes',
@@ -6,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent implements OnInit {
-  constructor() {}
+  public heroes: Observable<Hero[]>;
 
-  ngOnInit() {}
+  constructor(private readonly heroService: HeroService) {}
+
+  ngOnInit() {
+    this.heroes = this.heroService.getAll();
+  }
 }
