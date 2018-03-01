@@ -1,3 +1,13 @@
-<p>
-  hero-details works!
-</p>
+<mat-card *ngIf="(hero | async)">
+  <mat-card-header>
+    <mat-card-title>
+      <h2>
+        {{ (hero | async)?.name | uppercase }}
+      </h2>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>ID: {{ (hero | async)?.id }}</div>
+    <div>Name: {{ (hero | async)?.name }}</div>
+  </mat-card-content>
+</mat-card>
