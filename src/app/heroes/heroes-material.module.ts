@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { MatListModule } from '@angular/material';
+import { MatCardModule, MatListModule } from '@angular/material';
 
 @NgModule({
-  imports: [MatListModule],
-  exports: [MatListModule],
+  imports: [MatCardModule, MatListModule],
+  exports: [MatCardModule, MatListModule],
 })
 export class HeroesMaterialModule {}
