@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { pluck, mergeMap, tap } from 'rxjs/operators';
+import { pluck, tap, switchMap } from 'rxjs/operators';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
@@ -28,7 +28,7 @@ export class HeroDetailsComponent implements OnInit {
 
     this.hero = this.route.params.pipe(
       pluck<{}, string>('id'),
-      mergeMap((id) => this.heroService.get(id)),
+      switchMap((id) => this.heroService.get(id)),
       tap(hero => this.form.patchValue(hero)),
     );
   }
