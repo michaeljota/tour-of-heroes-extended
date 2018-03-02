@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../../environments/environment';
 
 import { HeroesState, heroesReducer } from './heroes/heroes.reducer';
+import { HeroesEffects } from './heroes/heroes.effects';
 
 const STORE_NAME = 'heroes';
 
@@ -35,7 +36,7 @@ const metaReducers: MetaReducer<HeroesFeatState>[] = !environment.production
       metaReducers,
       initialState: new HeroesFeatState(),
     }),
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([HeroesEffects]),
   ],
   declarations: [],
 })
