@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { pluck, tap, switchMap } from 'rxjs/operators';
 
+import { AppState } from '../../app-store.module';
+
 import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+
+import { HeroDetailsActions } from './hero-details.actions';
+import { selectHero } from './hero-details.selectors';
 
 @Component({
   selector: 'app-hero-details',
@@ -13,35 +18,42 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-details.component.scss'],
 })
 export class HeroDetailsComponent implements OnInit {
-  public hero: Observable<Hero>;
+  public hero: Observable<Readonly<Hero>>;
   public form: FormGroup;
 
   constructor(
     private readonly builder: FormBuilder,
-    private readonly heroService: HeroService,
+    private readonly dispatcher: HeroDetailsActions,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    private readonly store: Store<AppState>,
   ) {}
 
   ngOnInit() {
     this.form = this.builder.group(new Hero());
+    this.hero = this.store
+      .select(selectHero)
+      .pipe(tap(hero => this.form.patchValue(hero)));
 
-    this.hero = this.route.params.pipe(
-      pluck<{}, string>('id'),
-      switchMap((id) => this.heroService.get(id)),
-      tap(hero => this.form.patchValue(hero)),
-    );
+    this.route.params.pipe(pluck<{}, string>('id')).subscribe(id => {
+      this.store.dispatch(this.dispatcher.load(id));
+    });
   }
 
-  async save() {
+  save() {
     const hero: Hero = this.form.getRawValue();
-    await this.heroService.update(hero.id, hero).toPromise();
+    this.store.dispatch(this.dispatcher.save(hero));
     this.router.navigate(['heroes']);
   }
 
-  async delete() {
+  delete() {
     const hero: Hero = this.form.getRawValue();
-    await this.heroService.delete(hero.id).toPromise();
+    this.store.dispatch(this.dispatcher.delete(hero.id));
+    this.router.navigate(['heroes']);
+  }
+
+  return() {
+    this.store.dispatch(this.dispatcher.clean());
     this.router.navigate(['heroes']);
   }
 }
