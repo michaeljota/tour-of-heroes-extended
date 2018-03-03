@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
 import { HeroDetailsState, heroDetailsReducer } from './hero-details/hero-details.reducer';
 import { HeroesState, heroesReducer } from './heroes/heroes.reducer';
 
+import { HeroDetailsEffects } from './hero-details/hero-details.effects';
 import { HeroesEffects } from './heroes/heroes.effects';
 
 const STORE_NAME = 'heroes';
@@ -40,7 +41,7 @@ const metaReducers: MetaReducer<HeroesFeatState>[] = !environment.production
       metaReducers,
       initialState: new HeroesFeatState(),
     }),
-    EffectsModule.forFeature([HeroesEffects]),
+    EffectsModule.forFeature([HeroDetailsEffects, HeroesEffects]),
   ],
   declarations: [],
 })
