@@ -11,17 +11,21 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { environment } from '../../environments/environment';
 
+import { HeroDetailsState, heroDetailsReducer } from './hero-details/hero-details.reducer';
 import { HeroesState, heroesReducer } from './heroes/heroes.reducer';
+
 import { HeroesEffects } from './heroes/heroes.effects';
 
 const STORE_NAME = 'heroes';
 
 class HeroesFeatState {
   heroes = new HeroesState();
+  details = new HeroDetailsState();
 }
 
 const heroesReducers: ActionReducerMap<HeroesFeatState> = {
   heroes: heroesReducer,
+  details: heroDetailsReducer,
 };
 
 export const heroesState = createFeatureSelector<HeroesFeatState>(STORE_NAME);
