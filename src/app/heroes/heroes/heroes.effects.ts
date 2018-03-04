@@ -6,20 +6,20 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 
 import { HeroService } from './../hero.service';
 
-import { HeroesActions } from './heroes.actions';
+import { HeroesActions, HeroesDispatcher } from './heroes.actions';
 
 @Injectable()
 export class HeroesEffects {
   constructor(
     private readonly actions: Actions,
+    private readonly dispatcher: HeroesDispatcher,
     private readonly heroService: HeroService,
-    private readonly heroesActions: HeroesActions,
   ) {}
 
   @Effect()
   public readonly getHeroes: Observable<Action> = this.actions.pipe(
     ofType(HeroesActions.Load),
     switchMap(() => this.heroService.getAll()),
-    map(heroes => this.heroesActions.success(heroes)),
+    map(heroes => this.dispatcher.success(heroes)),
   );
 }

@@ -7,7 +7,7 @@ import { AppState } from '../../app-store.module';
 
 import { Hero } from '../hero';
 
-import { HeroesActions } from './heroes.actions';
+import { HeroesDispatcher } from './heroes.actions';
 import { selectHeroesList } from './heroes.selectors';
 
 @Component({
@@ -20,12 +20,12 @@ export class HeroesComponent implements OnInit {
   public heroes: Observable<ReadonlyArray<Hero>>;
 
   constructor(
+    private readonly dispatcher: HeroesDispatcher,
     private readonly store: Store<AppState>,
-    private readonly actions: HeroesActions,
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(this.actions.load());
+    this.store.dispatch(this.dispatcher.load());
     this.heroes = this.store.select(selectHeroesList).pipe(startWith([]));
   }
 }

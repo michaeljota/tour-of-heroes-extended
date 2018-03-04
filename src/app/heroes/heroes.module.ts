@@ -10,8 +10,8 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 import { HeroService } from './hero.service';
-import { HeroDetailsActions } from './hero-details/hero-details.actions';
-import { HeroesActions } from './heroes/heroes.actions';
+import { HeroDetailsDispatcher } from './hero-details/hero-details.actions';
+import { HeroesDispatcher } from './heroes/heroes.actions';
 
 @NgModule({
   imports: [
@@ -22,6 +22,6 @@ import { HeroesActions } from './heroes/heroes.actions';
     HeroesStoreModule,
   ],
   declarations: [HeroDetailsComponent, HeroesComponent],
-  providers: [HeroService, HeroDetailsActions, HeroesActions],
+  providers: [HeroService, HeroDetailsDispatcher, HeroesDispatcher],
 })
 export class HeroesModule {}

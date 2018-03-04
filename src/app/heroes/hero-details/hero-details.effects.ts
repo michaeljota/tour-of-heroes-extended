@@ -2,12 +2,14 @@ import { Injectable, Inject } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { map, switchMap, catchError, tap } from 'rxjs/operators';
+import { map, switchMap, catchError, tap, filter } from 'rxjs/operators';
 
 import { HeroService } from './../hero.service';
 
 import {
   HeroDetailsActions,
+  HeroDetailsDispatcher,
+  HeroActionType,
   LoadHero,
   SaveHero,
   DeleteHero,
@@ -18,14 +20,14 @@ export class HeroDetailsEffects {
   constructor(
     private readonly actions: Actions,
     private readonly heroService: HeroService,
-    private readonly heroDetailsActions: HeroDetailsActions,
+    private readonly dispatcher: HeroDetailsDispatcher,
   ) {}
 
   @Effect()
   public readonly getHero: Observable<Action> = this.actions.pipe(
-    ofType(HeroDetailsActions.Load),
+    ofType<HeroActionType>(HeroDetailsActions.Load),
     switchMap((action: LoadHero) => this.heroService.get(action.payload)),
-    map(hero => this.heroDetailsActions.loadSuccess(hero)),
+    map(hero => this.dispatcher.loadSuccess(hero)),
   );
 
   @Effect({ dispatch: false })

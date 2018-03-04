@@ -9,7 +9,7 @@ import { AppState } from '../../app-store.module';
 
 import { Hero } from '../hero';
 
-import { HeroDetailsActions } from './hero-details.actions';
+import { HeroDetailsDispatcher } from './hero-details.actions';
 import { selectHero } from './hero-details.selectors';
 
 @Component({
@@ -23,7 +23,7 @@ export class HeroDetailsComponent implements OnInit {
 
   constructor(
     private readonly builder: FormBuilder,
-    private readonly dispatcher: HeroDetailsActions,
+    private readonly dispatcher: HeroDetailsDispatcher,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly store: Store<AppState>,

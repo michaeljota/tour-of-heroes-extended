@@ -3,11 +3,14 @@ import { Action } from '@ngrx/store';
 
 import { Hero } from '../hero';
 
+export enum HeroesActions {
+  Load = '[Heroes] Load',
+  LoadSuccess = '[Heroes] Load Success',
+  LoadFail = '[Heroes] Load Fail',
+}
+
 @Injectable()
-export class HeroesActions {
-  static readonly Load = '[Heroes] Load';
-  static readonly LoadSuccess = '[Heroes] Load Success';
-  static readonly LoadFail = '[Heroes] Load Fail';
+export class HeroesDispatcher {
 
   public load() {
     return new LoadHeroes();

@@ -3,16 +3,18 @@ import { Action } from '@ngrx/store';
 
 import { Hero } from '../hero';
 
-@Injectable()
-export class HeroDetailsActions {
-  static readonly Clean = '[Hero] Clean';
-  static readonly Load = '[Hero] Load';
-  static readonly LoadSuccess = '[Hero] Load Success';
-  static readonly Save = '[Hero] Save';
-  static readonly SaveSuccess = '[Hero] Save Success';
-  static readonly Delete = '[Hero] Delete';
-  static readonly DeleteSuccess = '[Hero] Delete Success';
+export enum HeroDetailsActions {
+  Clean = '[Hero] Clean',
+  Load = '[Hero] Load',
+  LoadSuccess = '[Hero] Load Success',
+  Save = '[Hero] Save',
+  SaveSuccess = '[Hero] Save Success',
+  Delete = '[Hero] Delete',
+  DeleteSuccess = '[Hero] Delete Success',
+}
 
+@Injectable()
+export class HeroDetailsDispatcher {
   public clean() {
     return new CleanHero();
   }
