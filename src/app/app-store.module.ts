@@ -18,7 +18,10 @@ const metaReducers: MetaReducer<AppState>[] = [];
 
 @NgModule({
   imports: [
-    StoreModule.forRoot(reducers, { metaReducers, initialState: new AppState() }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      initialState: { ...new AppState() },
+    }),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([]),
   ],
