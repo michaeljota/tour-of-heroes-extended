@@ -1,7 +1,19 @@
-# TohAdvance
+# Tour of Heroes Extended
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
 
+This is an example project using Angular CLI, Material and the ngrx platform components. The code is organized following the Angular Style Guide. 
+
+Featuring: 
+- Angular CLI
+- Material
+- Lazy loading
+- `@ngrx/store` state manager
+- `@ngrx/effects` side effects manager
+- Angular In Memory Web API - To fake a backend
+
+-----
+## CLI Docs
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
