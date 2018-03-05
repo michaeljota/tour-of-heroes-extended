@@ -8,10 +8,13 @@ export class HeroesState {
   public readonly list: ReadonlyArray<Hero> = [];
 }
 
-export const heroesReducer: ActionReducer<HeroesState, HeroesActionType> = (
-  state = new HeroesState(),
-  action,
-) => {
+/**
+ * @type {ActionReducer<HeroesState, HeroesActionType>}
+ */
+export function heroesReducer(
+  state: HeroesState = new HeroesState(),
+  action: HeroesActionType,
+) {
   switch (action.type) {
     case HeroesActions.LoadSuccess:
       return {
@@ -21,4 +24,4 @@ export const heroesReducer: ActionReducer<HeroesState, HeroesActionType> = (
     default:
       return state;
   }
-};
+}

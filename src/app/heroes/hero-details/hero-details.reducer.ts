@@ -8,10 +8,13 @@ export class HeroDetailsState {
   public readonly hero: Readonly<Hero> = new Hero();
 }
 
-export const heroDetailsReducer: ActionReducer<
-  HeroDetailsState,
-  HeroActionType
-> = (state = new HeroDetailsState(), action) => {
+/**
+ * @type {ActionReducer<HeroDetailsState,HeroActionType>}
+ */
+export function heroDetailsReducer(
+  state: HeroDetailsState = new HeroDetailsState(),
+  action: HeroActionType,
+): HeroDetailsState {
   switch (action.type) {
     case HeroDetailsActions.Clean:
       return {
@@ -26,4 +29,4 @@ export const heroDetailsReducer: ActionReducer<
     default:
       return state;
   }
-};
+}
