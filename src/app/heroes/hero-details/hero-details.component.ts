@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { pluck, tap, switchMap } from 'rxjs/operators';
+import { pluck, tap } from 'rxjs/operators';
 
 import { AppState } from '../../app-store.module';
 

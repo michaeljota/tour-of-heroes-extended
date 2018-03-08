@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import {
-  ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
-  createSelector,
   MetaReducer,
   StoreModule,
 } from '@ngrx/store';

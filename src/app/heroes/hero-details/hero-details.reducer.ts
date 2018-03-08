@@ -1,5 +1,3 @@
-import { ActionReducer } from '@ngrx/store';
-
 import { Hero } from './../hero';
 
 import { HeroActionType, HeroDetailsActions } from './hero-details.actions';
