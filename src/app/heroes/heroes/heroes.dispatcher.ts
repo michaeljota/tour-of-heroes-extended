@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Hero } from '../hero';
+import { Hero } from './../shared/hero.model';
 
 import { LoadHeroes, LoadHeroesSuccess } from './heroes.actions';
 

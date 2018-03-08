@@ -7,7 +7,7 @@ import { pluck, tap } from 'rxjs/operators';
 
 import { AppState } from '../../app-store.module';
 
-import { Hero } from '../hero';
+import { Hero } from './../shared/hero.model';
 
 import { HeroDetailsDispatcher } from './hero-details.dispatcher';
 import { selectHero } from './hero-details.selectors';

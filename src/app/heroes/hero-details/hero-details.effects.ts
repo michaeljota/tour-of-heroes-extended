@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 
-import { HeroService } from './../hero.service';
+import { HeroService } from './../shared/hero.service';
 
 import {
   HeroDetailsActions,

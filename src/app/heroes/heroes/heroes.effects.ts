@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { map, switchMap } from 'rxjs/operators';
 
-import { HeroService } from './../hero.service';
+import { HeroService } from './../shared/hero.service';
 
 import { HeroesActions } from './heroes.actions';
 import { HeroesDispatcher } from './heroes.dispatcher';

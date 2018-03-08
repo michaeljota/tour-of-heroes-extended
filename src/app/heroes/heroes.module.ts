@@ -9,7 +9,7 @@ import { HeroesStoreModule } from './heroes-store.module';
 import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
-import { HeroService } from './hero.service';
+import { HeroService } from './shared/hero.service';
 import { HeroDetailsDispatcher } from './hero-details/hero-details.dispatcher';
 import { HeroesDispatcher } from './heroes/heroes.dispatcher';
 

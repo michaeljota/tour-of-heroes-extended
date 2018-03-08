@@ -1,4 +1,4 @@
-import { Hero } from './../hero';
+import { Hero } from '././../shared/hero.model';
 
 import { HeroActionType, HeroDetailsActions } from './hero-details.actions';
 

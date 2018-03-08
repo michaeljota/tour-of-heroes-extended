@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { Hero } from '../hero';
+import { Hero } from './../shared/hero.model';
 
 export enum HeroesActions {
   Load = '[Heroes] Load',

@@ -5,7 +5,7 @@ import { startWith } from 'rxjs/operators';
 
 import { AppState } from '../../app-store.module';
 
-import { Hero } from '../hero';
+import { Hero } from './../shared/hero.model';
 
 import { HeroesDispatcher } from './heroes.dispatcher';
 import { selectHeroesList } from './heroes.selectors';

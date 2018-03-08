@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError } from 'rxjs/operators';
 
-import { Hero } from './hero';
+import { Hero } from './hero.model';
 
 @Injectable()
 export class HeroService {
