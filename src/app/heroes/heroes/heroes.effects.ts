@@ -6,7 +6,8 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { HeroService } from './../hero.service';
 
-import { HeroesActions, HeroesDispatcher } from './heroes.actions';
+import { HeroesActions } from './heroes.actions';
+import { HeroesDispatcher } from './heroes.dispatcher';
 
 @Injectable()
 export class HeroesEffects {

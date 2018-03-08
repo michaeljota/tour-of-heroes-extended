@@ -11,7 +11,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 
 import { HeroService } from './hero.service';
 import { HeroDetailsDispatcher } from './hero-details/hero-details.dispatcher';
-import { HeroesDispatcher } from './heroes/heroes.actions';
+import { HeroesDispatcher } from './heroes/heroes.dispatcher';
 
 @NgModule({
   imports: [
