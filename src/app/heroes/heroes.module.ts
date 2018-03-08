@@ -10,7 +10,7 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
 import { HeroService } from './hero.service';
-import { HeroDetailsDispatcher } from './hero-details/hero-details.actions';
+import { HeroDetailsDispatcher } from './hero-details/hero-details.dispatcher';
 import { HeroesDispatcher } from './heroes/heroes.actions';
 
 @NgModule({

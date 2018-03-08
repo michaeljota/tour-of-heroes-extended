@@ -6,12 +6,12 @@ import { HeroService } from './../hero.service';
 
 import {
   HeroDetailsActions,
-  HeroDetailsDispatcher,
   HeroActionType,
   LoadHero,
   SaveHero,
   DeleteHero,
 } from './hero-details.actions';
+import { HeroDetailsDispatcher } from './hero-details.dispatcher';
 
 @Injectable()
 export class HeroDetailsEffects {
@@ -22,14 +22,14 @@ export class HeroDetailsEffects {
   ) {}
 
   @Effect()
-  public readonly getHero: Observable<Action> = this.actions.pipe(
+  public readonly getHero = this.actions.pipe(
     ofType<HeroActionType>(HeroDetailsActions.Load),
     switchMap((action: LoadHero) => this.heroService.get(action.payload)),
     map(hero => this.dispatcher.loadSuccess(hero)),
   );
 
   @Effect({ dispatch: false })
-  public readonly saveHero: Observable<void> = this.actions.pipe(
+  public readonly saveHero = this.actions.pipe(
     ofType(HeroDetailsActions.Save),
     switchMap((action: SaveHero) =>
       this.heroService.update(action.payload.id, action.payload),
@@ -38,7 +38,7 @@ export class HeroDetailsEffects {
   );
 
   @Effect({ dispatch: false })
-  public readonly deleteHero: Observable<void> = this.actions.pipe(
+  public readonly deleteHero = this.actions.pipe(
     ofType(HeroDetailsActions.Delete),
     switchMap((action: DeleteHero) => this.heroService.delete(action.payload)),
   );

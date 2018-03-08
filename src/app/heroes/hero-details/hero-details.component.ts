@@ -9,7 +9,7 @@ import { AppState } from '../../app-store.module';
 
 import { Hero } from '../hero';
 
-import { HeroDetailsDispatcher } from './hero-details.actions';
+import { HeroDetailsDispatcher } from './hero-details.dispatcher';
 import { selectHero } from './hero-details.selectors';
 
 @Component({
