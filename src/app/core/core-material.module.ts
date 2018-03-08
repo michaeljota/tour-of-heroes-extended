@@ -5,4 +5,4 @@ import { MatSidenavModule, MatToolbarModule } from '@angular/material';
   imports: [MatSidenavModule, MatToolbarModule],
   exports: [MatSidenavModule, MatToolbarModule],
 })
-export class MaterialModule {}
+export class CoreMaterialModule {}
